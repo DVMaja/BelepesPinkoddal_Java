@@ -13,6 +13,7 @@ public class BelepesKoddal {
 
         String pinKod = KodBekeresStringel();
         KodEllenorzesStringel(pinKod);
+        // legyen olyan mint a pin pad, de ne sorrenbe legyen
 
     }
 
