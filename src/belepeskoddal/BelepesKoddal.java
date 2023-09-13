@@ -53,6 +53,10 @@ public class BelepesKoddal {
             System.out.print("Kérem adja meg a pinkódot: ");
             pin = sc.nextLine();
 
+            if (!(pin.length() >= 4 && pin.length() <= 6)) {
+                System.out.println("Nem megfelelő formátum, minimum 4\nmaximum 6 szmjegy legyen!");
+            }
+
         } while (!(pin.length() >= 4 && pin.length() <= 6));
 
         return pin;
