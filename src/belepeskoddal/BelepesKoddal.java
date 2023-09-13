@@ -54,31 +54,31 @@ public class BelepesKoddal {
             pin = sc.nextLine();
 
         } while (!(pin.length() >= 4 && pin.length() <= 6));
-        
+
         return pin;
     }
 
     private static void KodEllenorzesStringel(String pinKod) {
         szamlalo = 1;
         String kod;
-        
+
         do {
             System.out.printf("Kérem a belépési kódot(%d/3):", szamlalo);
             kod = sc.nextLine();
 
-            if (kod.equals(pinKod)) {
+            if (!kod.equals(pinKod)) {
                 System.out.println("\nHibás pin kód!");
                 szamlalo++;
             }
 
-        } while (kod.equals(pinKod) && szamlalo <= 3);
+        } while (!kod.equals(pinKod) && szamlalo <= 3);
 
         if (szamlalo <= 3) {
             System.out.println("Rendben sikeres belépés!");
         } else {
             System.out.println("Belépés megtagadva!");
         }
-        
+
     }
 
 }
