@@ -8,8 +8,11 @@ public class BelepesKoddal {
     private static int szamlalo;
 
     public static void main(String[] args) {
-        int kapottPin = KodBekeres();
-        KodEllenorzes(kapottPin);
+        //int kapottPin = KodBekeres();
+        //KodEllenorzes(kapottPin);
+
+        String pinKod = KodBekeresStringel();
+        KodEllenorzesStringel(pinKod);
 
     }
 
@@ -17,30 +20,65 @@ public class BelepesKoddal {
         System.out.print("Kérem adja meg a pinkódot: ");
         int pin = sc.nextInt();
         System.out.println("Kód elmentve!");
+
         return pin;
     }
 
     private static void KodEllenorzes(int kapottPin) {
         szamlalo = 1;
-        int kod;        
+        int kod;
 
         do {
             System.out.printf("Kérem a belépési kódot(%d/3):", szamlalo);
             kod = sc.nextInt();
-            
+
             if (kod != kapottPin) {
                 System.out.println("\nHibás pin kód!");
                 szamlalo++;
             }
-            
 
         } while (kod != kapottPin && szamlalo <= 3);
-        
+
         if (szamlalo <= 3) {
             System.out.println("Rendben sikeres belépés!");
-        }else{
+        } else {
             System.out.println("Belépés megtagadva!");
         }
+    }
+
+    private static String KodBekeresStringel() {
+        String pin = "";
+
+        do {
+            System.out.print("Kérem adja meg a pinkódot: ");
+            pin = sc.nextLine();
+
+        } while (!(pin.length() >= 4 && pin.length() <= 6));
+        
+        return pin;
+    }
+
+    private static void KodEllenorzesStringel(String pinKod) {
+        szamlalo = 1;
+        String kod;
+        
+        do {
+            System.out.printf("Kérem a belépési kódot(%d/3):", szamlalo);
+            kod = sc.nextLine();
+
+            if (kod.equals(pinKod)) {
+                System.out.println("\nHibás pin kód!");
+                szamlalo++;
+            }
+
+        } while (kod.equals(pinKod) && szamlalo <= 3);
+
+        if (szamlalo <= 3) {
+            System.out.println("Rendben sikeres belépés!");
+        } else {
+            System.out.println("Belépés megtagadva!");
+        }
+        
     }
 
 }
