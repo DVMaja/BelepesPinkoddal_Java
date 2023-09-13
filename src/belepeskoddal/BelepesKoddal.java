@@ -22,17 +22,21 @@ public class BelepesKoddal {
 
     private static void KodEllenorzes(int kapottPin) {
         szamlalo = 1;
-        int kod;
+        int kod;        
 
         do {
             System.out.printf("Kérem a belépési kódot(%d/3):", szamlalo);
             kod = sc.nextInt();
-            System.out.println("");
-            szamlalo++;
+            
+            if (kod != kapottPin) {
+                System.out.println("\nHibás pin kód!");
+                szamlalo++;
+            }
+            
 
         } while (kod != kapottPin && szamlalo <= 3);
         
-        if (szamlalo < 4) {
+        if (szamlalo <= 3) {
             System.out.println("Rendben sikeres belépés!");
         }else{
             System.out.println("Belépés megtagadva!");
