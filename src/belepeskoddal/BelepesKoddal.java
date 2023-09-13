@@ -1,19 +1,23 @@
 package belepeskoddal;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class BelepesKoddal {
 
     private static Scanner sc = new Scanner(System.in);
+    private static Random rand = new Random();
     private static int szamlalo;
 
     public static void main(String[] args) {
         //int kapottPin = KodBekeres();
         //KodEllenorzes(kapottPin);
 
-        String pinKod = KodBekeresStringel();
-        KodEllenorzesStringel(pinKod);
+        //String pinKod = KodBekeresStringel();
+        //KodEllenorzesStringel(pinKod);
         // legyen olyan mint a pin pad, de ne sorrenbe legyen
+        int[] kevertTomb = Kever();
+        PinpadKiiratas(kevertTomb);
 
     }
 
@@ -84,6 +88,34 @@ public class BelepesKoddal {
             System.out.println("Belépés megtagadva!");
         }
 
+    }
+
+    private static int[] Kever() {
+        //meg kell kevernie a pinpadra kiírt számokat        
+        int[] szamTomb = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+        for (int index = 0; index < szamTomb.length; index++) {
+            int helytarto = szamTomb[index];
+            int velszam = rand.nextInt(szamTomb.length);
+            szamTomb[index] = szamTomb[velszam];
+            szamTomb[velszam] = helytarto;
+        }
+        return szamTomb;
+    }
+
+    private static void PinpadKiiratas(int[] kevertTomb) {
+        /*Így kell elnevezni
+        2 5 8
+        0 1 3
+        4 6 7
+            3
+         */
+        for (int szamlalo = 0; szamlalo < kevertTomb.length ; szamlalo++) {
+            System.out.printf("%-5d", kevertTomb[szamlalo]);
+            if (szamlalo % 3 == 0) {
+                System.out.println("");
+            }
+        }
     }
 
 }
